@@ -12,7 +12,7 @@ share-img: /assets/img/crewctf/2024/bg.png
 # Crew CTF Writeup
 
 I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression. What made me sad though is the lack of recognition for the last forensics challenge (Unfare) and I thought it definitely deserves some love and archiving. I highly recommend checking out write-ups for different challenges as well; @, @, and @ produced tremendous pieces themselves.
-{: .box-success}$a
+{: .box-success}
 
 As always, without further ado, here go my notes.
 
@@ -221,7 +221,7 @@ Two days of joy condensed into a single image for your eyes only.
 
 
 
-###Fun resources for anyone solving possibly related problem
+### Fun resources for anyone solving possibly related problem
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
