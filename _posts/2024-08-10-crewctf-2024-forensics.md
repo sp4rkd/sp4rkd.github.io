@@ -17,7 +17,7 @@ I have to be honest: the set of challenges was exceptionally interesting, with a
 I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
 Without further ado, here go my notes.
 
-## Recursion
+## - Recursion -
 
 Initially, you face the eternally conflicting decision: to click on anything related to recursion or to avoid a headache. Luckily, this challenge was not as terrifying as it originally seemed. 
 
@@ -47,7 +47,7 @@ Now, wait—does this pcap also contain a whole lot of something, primarily an e
 
 ![Image of Solve](/assets/img/crewctf/2024/matrioshka_debulk.png)
 
-## Unfare
+## - Unfare -
 
 Buckle up and say <em>**fare**</em>well to your sanity because this one felt special. During the unavoidable initial service overload of the CTF infrastructure, I managed to slip through and pull only one challenge before the crash. What do you know? It ended up being the epitome of chasing the dragon for the night—the Un<em>**fare**</em>. 
 
@@ -224,9 +224,10 @@ Additionally, to prove my point about approaching the jungle in multiple ways, h
 
 ![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
+Massive thank you to the whole Hackerscrew for putting such an amazing event together. Definitely will save the date for next year!
 
 ### _____________________________________________________________________
-### Fun resources for anyone solving possibly related problem
+<em> Fun resources for anyone solving possibly related problem </em>
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
