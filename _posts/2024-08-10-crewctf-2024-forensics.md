@@ -17,7 +17,7 @@ I have to be honest: the set of challenges was exceptionally interesting, with a
 I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
 Without further ado, here go my notes.
 
-## - Recursion -
+## <p style="text-align: center;">- Recursion -</p>
 
 Initially, you face the eternally conflicting decision: to click on anything related to recursion or to avoid a headache. Luckily, this challenge was not as terrifying as it originally seemed. 
 
