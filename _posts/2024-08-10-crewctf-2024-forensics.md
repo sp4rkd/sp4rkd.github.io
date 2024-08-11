@@ -225,7 +225,7 @@ Additionally, to prove my point about approaching the jungle in multiple ways, h
 ![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
 
-### ---------------------------------------------------------
+### _____________________________________________________________________
 ### Fun resources for anyone solving possibly related problem
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
