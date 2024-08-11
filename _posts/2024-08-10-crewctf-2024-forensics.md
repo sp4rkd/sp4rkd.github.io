@@ -107,17 +107,17 @@ The flag extractor on its own was expected, but there aren't many other sources,
 ## Conclusion
 
 Believe it or not, it's still in the forensics category for a reason. Always remember the age-old mantra:
-"""
+~~~
 Doing the right protocols, 
    in the right frame, 
    IN THE RIGHT FORMAT 
          AND DATA TYPE 
 gets_you{mad_cheeks}.
-"""
+~~~
 
-In reality, this challenge mainly requires you to recognize the traffic, decode, and concatenate a specific segment from both message types. So technically, everything else could be considered bloat. To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @() and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
+In reality, this challenge mainly requires you to recognize the traffic, decode, and concatenate a specific segment from both message types. So technically, everything else could be considered bloat. To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
 
-![Image of guessrensics](/assets/img/crewctf/2024/mifare_transmissions.png)
+![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
 Anyway, here is my bloated function with improved packet parsing, thanks to the teammate of @.
 
