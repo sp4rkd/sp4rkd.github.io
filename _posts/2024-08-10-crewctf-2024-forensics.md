@@ -11,8 +11,8 @@ share-img: /assets/img/crewctf/2024/bg.png
 
 # Crew CTF - Forensics writeup
 
-I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression but the lack of love for the last forensics challenge (Unfare) is criminal. This write-up was with higher personal priority because of the need for archiving. 
-{: .box-success}
+I have to be honest: the set of challenges was exceptionally interesting, with a reasonable progression of difficulty. However, the lack of attention given to the final forensics challenge (Unfare) is criminal. This write-up takes on higher personal priority due to the need for archiving.
+{: .box-warning}
 
 I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
 Without further ado, here go my notes.
@@ -22,6 +22,10 @@ Without further ado, here go my notes.
 Initially, you face the eternally conflicting decision: to click on anything related to recursion or to avoid a headache. Luckily, this challenge was not as terrifying as it originally seemed. 
 
 ### Overview of the Challenge
+
+Question: I caught my co-worker moving some weird files on a USB, can you tell me whats going on?
+{: .box-error}
+
 The provided pcap traffic sets the tone for this forensics weekend, featuring the Universal Serial Bus, also known to us commonwealth pigs as USB. As you dig through the traffic, all you see is the usual chaos that might or might not lead somewhere. In this or any other case, you also want to see other tools chew on the interesting parts to either support or disprove your ideas while you scream into a pillow. 
 
 Let’s take a stroll with our good old pal, binwalk, first.
@@ -30,7 +34,7 @@ Let’s take a stroll with our good old pal, binwalk, first.
 
 ### Is This Actually an Embedded Something?
 
-For those that didn't ever think of throwing binwalk at a pcap before, notice it can extract quite painlessly too. Upon carving open the mysterious compressed file, we get hit with a first whiff of recursion - it's another pcap. 
+For those who never considered running binwalk on a pcap before, notice that it can extract quite painlessly as well. Upon carving open the mysterious compressed file, we are hit with the first whiff of recursion—it's another pcap.
 
 How intriguing! 
 Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **7z**?
@@ -58,11 +62,11 @@ You are provided with a single pcap file containing USB communication from the h
 Someone was reading cards on my computer! Lucky I was listening...
 {: .box-error}
 
- There are four different addresses in play, all sharing the same prefix (**10.4.X**). Some traffic seems to be paired, given the sequencing, which might indicate some input/output distinction; other packets are just there for you to paint the whole picture. Digging through the recognizable patterns in the transmitted leftover data, we can see Proxmark3 (**PM3**) signatures in both bootrom and ncd files.
+ There are four different addresses in play, all sharing the same prefix (**10.4.X**). Some traffic seems to be paired, given the sequencing, which might indicate some input/output distinction; other packets are just there for you to paint the whole picture. Digging through the recognizable patterns in the transmitted leftover data, we can see Proxmark3 (**PM3**) signatures in both **bootrom** and **ncd** files.
 
 ![Felica and PM3 files](/assets/img/crewctf/2024/info_dump.png)
 
-As well as artifacts from the Felica manufacturer and a majority of URB bulks that are somewhat predictable. Thus, the general focus of this challenge becomes clearer.
+As well as artifacts from the **FeliCa** manufacturer and a majority of URB bulks that are somewhat predictable. Thus, the general focus of this challenge becomes clearer.
 
 ![Sony FeliCa](/assets/img/crewctf/2024/felica.png)
 
@@ -70,7 +74,7 @@ As well as artifacts from the Felica manufacturer and a majority of URB bulks th
 
 After extracting leftover data from the source and destination addresses **10.4.1** and **10.4.2** (due to the PM3 prefix), you can see slight deviations in packet structure but a similar theme. In all fairness, the opportunity to finally explore PM3 and different USB tooling in depth was a good hit of happy chemicals on its own, so I went ahead and explored.
 
-For wireshark, I generally used this view layout and filter baseline:
+For wireshark, I generally use this view layout and filter baseline:
 
 ```plaintext
 !(usb.urb_type == URB_SUBMIT && usb.endpoint_address.direction == IN) && 
@@ -88,7 +92,7 @@ Making different data variations greatly helps during processing. Focus on essen
 
 ### Burnout
 
-Now, about that hellhole. I would like to thank the main crutch of this violent night: the one and only [CyberChef](https://gchq.github.io/CyberChef/)  for always being there when I'm too burnt to handle. Trying to make sense of the data is an unhealthy obsession. The math jungle and its offsets can be approached in multiple ways, and even though the aforementioned tools were amazing, they didn't get me much further (at least they got me this random PSK squeeze).
+Now, about that hellhole. I would like to thank the main crutch of this violent night: the one and only [CyberChef](https://gchq.github.io/CyberChef/)  for always being there when I'm too burnt to handle. Trying to make sense of the data has become an unhealthy obsession at this point, and the math jungle, along with its offsets, can be approached in multiple ways. Even though the aforementioned tools were amazing, they didn't get me much further—at least they helped me squeeze out this random PSK.
 
 ![PSK squeeze](/assets/img/crewctf/2024/psk_clock.png){: .mx-auto.d-block :}
 
@@ -105,6 +109,7 @@ Since I built the Proxmark3 toolkit before and fed it a bunch of different traff
 
 The flag extractor on its own was expected, but there aren't many other sources, so the mifarecmd is almost the only reasonable reference. Even though it's still not the most casual read you've ever had in your life, it seemed like the only way to correct my somewhat wild data parsing process.
 
+<em>Example ecrop of the 3000 lines worth of mifarecmd</em>
 ![Example crop of the 3000 lines worth of mifarecmd](/assets/img/crewctf/2024/casual_read.png)
 
 ## Conclusion
@@ -215,12 +220,13 @@ Two days of joy condensed into a single image for your eyes only.
 
 ![Image of flag pop](/assets/img/crewctf/2024/flag_pop.png)
 
-To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
+Additionally, to prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
 
 ![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
 
-### Fun resources for anyone solving possibly related problem
+
+### PS: Fun resources for anyone solving possibly related problem
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
