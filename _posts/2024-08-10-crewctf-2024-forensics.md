@@ -9,12 +9,12 @@ thumbnail-img: /assets/img/crewctf/2024/thumb.png
 share-img: /assets/img/crewctf/2024/bg.png
 ---
 
-# Crew CTF Writeup
+# Crew CTF - Forensics writeup
 
 I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression but the lack of love for the last forensics challenge (Unfare) is criminal. This write-up was with higher personal priority because of the need for archiving. 
 {: .box-success}
 
-I highly recommend checking out write-ups for different challenges as well; my personal favorite was [@warlocksmurf]{https://warlocksmurf.github.io/posts/crewctf2024/}, who produced a tremendous piece about the remaining forensics challenges.
+I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
 Without further ado, here go my notes.
 
 ## Recursion
@@ -120,10 +120,6 @@ gets_you{mad_cheeks}.
 
 In reality, this challenge mainly requires you to recognize the traffic, decode, and concatenate a specific segment from both message types. So technically, everything else could be considered bloat. 
 
-To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
-
-![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
-
 Anyway, here is my bloated function with improved packet parsing, thanks to the teammate of @warlocksmurf.
 
 {% highlight Python linenos %}
@@ -219,7 +215,9 @@ Two days of joy condensed into a single image for your eyes only.
 
 ![Image of flag pop](/assets/img/crewctf/2024/flag_pop.png)
 
+To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
 
+![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
 
 ### Fun resources for anyone solving possibly related problem
