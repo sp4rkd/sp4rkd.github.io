@@ -11,9 +11,10 @@ share-img: /assets/img/crewctf/2024/bg.png
 
 # Crew CTF Writeup
 
-I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression but the lack of recognition for the last forensics challenge (Unfare) is a warcrime. This write-up was with higher personal priority because of it's need for love and archiving. I highly recommend checking out write-ups for different challenges as well; my personal favorite was [@warlocksmurf]{https://warlocksmurf.github.io/posts/crewctf2024/}, who produced a tremendous piece about the remaining forensics challenges.
+I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression but the lack of love for the last forensics challenge (Unfare) is criminal. This write-up was with higher personal priority because of the need for archiving. 
 {: .box-success}
 
+I highly recommend checking out write-ups for different challenges as well; my personal favorite was [@warlocksmurf]{https://warlocksmurf.github.io/posts/crewctf2024/}, who produced a tremendous piece about the remaining forensics challenges.
 Without further ado, here go my notes.
 
 ## Recursion
