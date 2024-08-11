@@ -10,8 +10,9 @@ share-img: /assets/img/crewctf/2024/bg.png
 ---
 
 # Crew CTF Writeup
-{: .box-success}
-I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression. What made me sad though is the lack of recognition for the last forensics challenge (Unfare) and I thought it definitely deserves some recognition and archiving. I highly recommend checking out write-ups for different challenges as well; @, @, and @ produced tremendous pieces themselves.
+
+I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression. What made me sad though is the lack of recognition for the last forensics challenge (Unfare) and I thought it definitely deserves some love and archiving. I highly recommend checking out write-ups for different challenges as well; @, @, and @ produced tremendous pieces themselves.
+{: .box-success}$a
 
 As always, without further ado, here go my notes.
 
@@ -30,15 +31,18 @@ Let’s take a stroll with our good old pal, binwalk, first.
 
 For those that didn't ever think of throwing binwalk at a pcap before, notice it can extract quite painlessly too. Upon carving open the mysterious compressed file, we get hit with a first whiff of recursion - it's another pcap. 
 
-How intriguing! Now, wait—does this pcap also contain a whole lot of something, primarily an embedded 7z?
+How intriguing! 
+Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **7z*8?
 
-How intriguing! Now, wait—does this pcap also contain a whole lot of something, primarily an embedded tar?
+How intriguing! 
+Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **tar**?
 
-How intriguing! Now, wait—does this pcap also contain a whole lot of something, primarily an embedded zip?
+How intriguing! 
+Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **zip**?
 
 ![Image of Solve](/assets/img/crewctf/2024/matrioshka_debulk.png)
 
-Are you, by chance, a pleasure model recursion?
+Are you, by chance, a pleasure model of a recursion challenge?
 
 ## Unfare
 
@@ -214,10 +218,16 @@ Two days of joy condensed into a single image for your eyes only.
 
 ![Image of flag pop](/assets/img/crewctf/2024/flag_pop.png)
 
-### Fun resources for anyone solving possibly related problem
+
+
+
+###Fun resources for anyone solving possibly related problem
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
+ 
 ![Where to felica read write](/assets/img/crewctf/2024/felica_read_write.png)
+
 ![Where to find DES card mode](/assets/img/crewctf/2024/DES_card_mode.png)
+
 ![Where to find AES card mode](/assets/img/crewctf/2024/AES_card_mode.png)
