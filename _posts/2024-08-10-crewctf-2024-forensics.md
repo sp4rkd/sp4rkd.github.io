@@ -58,8 +58,6 @@ Someone was reading cards on my computer! Lucky I was listening...
  There are four different addresses in play, all sharing the same prefix (**10.4.X**). Some traffic seems to be paired, given the sequencing, which might indicate some input/output distinction; other packets are just there for you to paint the whole picture. Digging through the recognizable patterns in the transmitted leftover data, we can see Proxmark3 (**PM3**) signatures in both bootrom and ncd files.
 
 ![Felica and PM3 files](/assets/img/crewctf/2024/info_dump.png)
-![Wheret o find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
-![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
 
 As well as artifacts from the Felica manufacturer and a majority of URB bulks that are somewhat predictable. Thus, the general focus of this challenge becomes clearer.
 
@@ -92,6 +90,7 @@ Now, about that hellhole. I would like to thank the main crutch of this violent 
 ![PSK squeeze](/assets/img/crewctf/2024/psk_clock.png){: .mx-auto.d-block :}
 
 Coincidentally enough, the technical specification for Felica overlaps with something I noticed during the PM3 deepdive.
+
 ![Image of Felica specs](/assets/img/crewctf/2024/felica_transmissions.png)
 
 To our collectively great demise, the entire card system flavor is a wrapper around the Mi**<em>fare</em>** model (hence some previous Mifare traces).
@@ -108,15 +107,17 @@ The flag extractor on its own was expected, but there aren't many other sources,
 ## Conclusion
 
 Believe it or not, it's still in the forensics category for a reason. Always remember the age-old mantra:
-**Doing the right protocols, 
-     in the right frame, 
-     IN THE RIGHT FORMAT 
-           AND DATA TYPE 
-gets_you{mad_cheeks}.**
-
-![Image of flag pop](/assets/img/crewctf/2024/flag_pop.png)
+"""
+Doing the right protocols, 
+   in the right frame, 
+   IN THE RIGHT FORMAT 
+         AND DATA TYPE 
+gets_you{mad_cheeks}.
+"""
 
 In reality, this challenge mainly requires you to recognize the traffic, decode, and concatenate a specific segment from both message types. So technically, everything else could be considered bloat. To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @() and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
+
+![Image of guessrensics](/assets/img/crewctf/2024/mifare_transmissions.png)
 
 Anyway, here is my bloated function with improved packet parsing, thanks to the teammate of @.
 
@@ -209,3 +210,14 @@ print("\n",flag)
 
 {% endhighlight %}
 
+Two days of joy condensed into a single image for your eyes only.
+
+![Image of flag pop](/assets/img/crewctf/2024/flag_pop.png)
+
+### Fun resources for anyone solving possibly related problem
+
+![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
+![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
+![Where to felica read write](/assets/img/crewctf/2024/felica_read_write.png)
+![Where to find DES card mode](/assets/img/crewctf/2024/DES_card_mode.png)
+![Where to find AES card mode](/assets/img/crewctf/2024/AES_card_mode.png)
