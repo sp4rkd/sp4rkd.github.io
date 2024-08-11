@@ -109,7 +109,7 @@ Since I built the Proxmark3 toolkit before and fed it a bunch of different traff
 
 The flag extractor on its own was expected, but there aren't many other sources, so the mifarecmd is almost the only reasonable reference. Even though it's still not the most casual read you've ever had in your life, it seemed like the only way to correct my somewhat wild data parsing process.
 
-<em>Example ecrop of the 3000 lines worth of mifarecmd</em>
+<em>Example crop of the 3000 lines worth of mifarecmd:</em>
 ![Example crop of the 3000 lines worth of mifarecmd](/assets/img/crewctf/2024/casual_read.png)
 
 ## Conclusion
@@ -225,8 +225,8 @@ Additionally, to prove my point about approaching the jungle in multiple ways, h
 ![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
 
-
-### PS: Fun resources for anyone solving possibly related problem
+### ---------------------------------------------------------
+### Fun resources for anyone solving possibly related problem
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
