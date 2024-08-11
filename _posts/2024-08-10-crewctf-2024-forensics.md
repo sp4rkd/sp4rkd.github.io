@@ -17,39 +17,45 @@ As always, without further ado, here go my notes.
 
 ## Recursion
 
-Initially, you face the eternally conflicting decision: to click on anything related to recursion or to avoid a headache. Luckily, this challenge was not as terrifying as it originally seemed. The provided pcap traffic sets the tone for this forensics weekend, featuring the Universal Serial Bus, also known to us commonwealth pigs as USB.
+Initially, you face the eternally conflicting decision: to click on anything related to recursion or to avoid a headache. Luckily, this challenge was not as terrifying as it originally seemed. 
 
-As you dig through the traffic, all you see is the usual USB chaos that might or might not lead somewhere. In this or any other case, you also want to see other tools chew on the interesting parts to either support or disprove your ideas while you scream into a pillow. 
+### Overview of the Challenge
+The provided pcap traffic sets the tone for this forensics weekend, featuring the Universal Serial Bus, also known to us commonwealth pigs as USB. As you dig through the traffic, all you see is the usual chaos that might or might not lead somewhere. In this or any other case, you also want to see other tools chew on the interesting parts to either support or disprove your ideas while you scream into a pillow. 
 
-Let’s take a stroll with our good old pal, binwalk, first, shall we?
+Let’s take a stroll with our good old pal, binwalk, first.
+
 ![Image](/assets/img/crewctf/2024/binwalk_default.png)
 
 ### Is This Actually an Embedded Something?
 
-Upon carving open the mysterious compressed file, we uncover another pcap. 
+For those that didn't ever think of throwing binwalk at a pcap before, notice it can extract quite painlessly too. Upon carving open the mysterious compressed file, we get hit with a first whiff of recursion - it's another pcap. 
+
 How intriguing! Now, wait—does this pcap also contain a whole lot of something, primarily an embedded 7z?
+
 How intriguing! Now, wait—does this pcap also contain a whole lot of something, primarily an embedded tar?
+
 How intriguing! Now, wait—does this pcap also contain a whole lot of something, primarily an embedded zip?
 
-Are you, by chance, a pleasure model recursion?
 ![Image of Solve](/assets/img/crewctf/2024/matrioshka_debulk.png)
 
+Are you, by chance, a pleasure model recursion?
 
 ## Unfare
 
-Buckle up and say <em>**fare**</em>well to your sanity because this one felt special. During the unavoidable initial service overload of the CTF infrastructure, I managed to slip through and pull only one challenge before the crash. What do you know? It ended up being the epitome of chasing the dragon for the night—the Un<em>**fare**</em>. I just couldn’t stop shooting to the point where sleep was no longer an option. Waking up from an involuntary micronap at 4:43 AM to the glow of terminals plastered with smart card hellhole packet extractions was truly a moment for self-reflection. 
+Buckle up and say <em>**fare**</em>well to your sanity because this one felt special. During the unavoidable initial service overload of the CTF infrastructure, I managed to slip through and pull only one challenge before the crash. What do you know? It ended up being the epitome of chasing the dragon for the night—the Un<em>**fare**</em>. 
 
-Almost 600 teams have tried, 11 have solved (some more janky than others), but a whole lot of people were so close, yet still too damn far… and I was one of them. Nonetheless, pretty impressive numbers for a pcap challenge, so massive shoutout to the designer @sealldev
+I just couldn’t stop shooting to the point where sleep was no longer an option. Waking up from an involuntary micronap at 4:43 AM to the glow of terminals plastered with hellhole packet extractions was truly a moment for self-reflection. Almost 600 teams have tried, 11 have solved (some more janky than others), but a whole lot of people were so close, yet still too damn far… and I was one of them. Nonetheless, pretty impressive numbers for a pcap challenge, so massive shoutout to the designer (@sealldev).
 
 ![Discord is mostly a support group anyway](/assets/img/crewctf/2024/discord_yet_so_far.png)
 
 ### Overview of the Challenge
 
 You are provided with a single pcap file containing USB communication from the host that sniffed the traffic and the following description.
-{: .box-error}
-Someone was reading cards on my computer! Lucky I was listening...
 
- There are four different addresses in play, all sharing the same prefix (10.4.X). Some traffic seems to be paired, given the sequencing, which might indicate some input/output distinction; other packets are just there for you to paint the whole picture. Digging through the recognizable patterns in the transmitted leftover data, we can see Proxmark3 (PM3) signatures in both bootrom and ncd files.
+Someone was reading cards on my computer! Lucky I was listening...
+{: .box-error}
+
+ There are four different addresses in play, all sharing the same prefix (**10.4.X**). Some traffic seems to be paired, given the sequencing, which might indicate some input/output distinction; other packets are just there for you to paint the whole picture. Digging through the recognizable patterns in the transmitted leftover data, we can see Proxmark3 (**PM3**) signatures in both bootrom and ncd files.
 
 ![Felica and PM3 files](/assets/img/crewctf/2024/info_dump.png)
 ![Wheret o find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
@@ -61,11 +67,9 @@ As well as artifacts from the Felica manufacturer and a majority of URB bulks th
 
 ### Data Extraction
 
-After extracting leftover data from the source and destination addresses 10.4.1 and 10.4.2 (due to the PM3 prefix), you can see slight deviations in packet structure but a similar theme. In all fairness, the opportunity to finally explore PM3 and different USB tooling in depth was a good hit of happy chemicals on its own, so I went ahead and explored.
+After extracting leftover data from the source and destination addresses **10.4.1** and **10.4.2** (due to the PM3 prefix), you can see slight deviations in packet structure but a similar theme. In all fairness, the opportunity to finally explore PM3 and different USB tooling in depth was a good hit of happy chemicals on its own, so I went ahead and explored.
 
 For wireshark, I generally used this view layout and filter baseline:
-
-![Wireshark view](/assets/img/crewctf/2024/wireshark_view.png)
 
 ```plaintext
 !(usb.urb_type == URB_SUBMIT && usb.endpoint_address.direction == IN) && 
@@ -74,16 +78,18 @@ For wireshark, I generally used this view layout and filter baseline:
 usb.capdata == ""
 ```
 
+![Wireshark view](/assets/img/crewctf/2024/wireshark_view.png)
+
 ![Patterns in leftovers](/assets/img/crewctf/2024/leftover_dissection.png)
 
-Making different data formatting options greatly helps during processing. Focus on essential sections, different formats, segment sizes, delimiters, and decoders to feed all you need.
+Making different data formatting options greatly helps during processing. Focus on essential sections, different formats, segment sizes, delimiters, and decoders to feed all you need. Tshark is your friend.
 
 
 ### Burnout
 
 Now, about that hellhole. I would like to thank the main crutch of this violent night: the one and only CyberChef for always being there when I'm too burnt to handle. Trying to make sense of the data is an unhealthy obsession. The math jungle and its offsets can be approached in multiple ways, and even though the aforementioned tools were amazing, they didn't get me much further (at least they got me this random PSK squeeze).
 
-![PSK squeeze](/assets/img/crewctf/2024/psk_clock.png)
+![PSK squeeze](/assets/img/crewctf/2024/psk_clock.png){: .mx-auto.d-block :}
 
 Coincidentally enough, the technical specification for Felica overlaps with something I noticed during the PM3 deepdive.
 ![Image of Felica specs](/assets/img/crewctf/2024/felica_transmissions.png)
