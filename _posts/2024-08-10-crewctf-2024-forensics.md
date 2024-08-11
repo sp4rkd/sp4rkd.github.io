@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CrewCTF 2024 forensics
+title: CrewCTF 2024
 subtitle: The harsh reality of USB pcaps
 gh-repo: sp4rkd/CrewCTF2024-forensics
 tags: [ctf, forensics, usb, proxmark3, mifare, felica, writeup]
@@ -11,10 +11,10 @@ share-img: /assets/img/crewctf/2024/bg.png
 
 # Crew CTF Writeup
 
-I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression. What made me sad though is the lack of recognition for the last forensics challenge (Unfare) and I thought it definitely deserves some love and archiving. I highly recommend checking out write-ups for different challenges as well; @, @, and @ produced tremendous pieces themselves.
+I have to be honest, the set of challenges was exceptionally interesting with reasonable difficulty progression but the lack of recognition for the last forensics challenge (Unfare) is a warcrime. This write-up was with higher personal priority because of it's need for love and archiving. I highly recommend checking out write-ups for different challenges as well; my personal favorite was [@warlocksmurf]{https://warlocksmurf.github.io/posts/crewctf2024/}, who produced a tremendous piece about the remaining forensics challenges.
 {: .box-success}
 
-As always, without further ado, here go my notes.
+Without further ado, here go my notes.
 
 ## Recursion
 
@@ -32,7 +32,7 @@ Let’s take a stroll with our good old pal, binwalk, first.
 For those that didn't ever think of throwing binwalk at a pcap before, notice it can extract quite painlessly too. Upon carving open the mysterious compressed file, we get hit with a first whiff of recursion - it's another pcap. 
 
 How intriguing! 
-Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **7z*8?
+Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **7z**?
 
 How intriguing! 
 Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **tar**?
@@ -41,8 +41,6 @@ How intriguing!
 Now, wait—does this pcap also contain a whole lot of something, primarily an embedded **zip**?
 
 ![Image of Solve](/assets/img/crewctf/2024/matrioshka_debulk.png)
-
-Are you, by chance, a pleasure model of a recursion challenge?
 
 ## Unfare
 
@@ -84,12 +82,12 @@ usb.capdata == ""
 
 ![Patterns in leftovers](/assets/img/crewctf/2024/leftover_dissection.png)
 
-Making different data formatting options greatly helps during processing. Focus on essential sections, different formats, segment sizes, delimiters, and decoders to feed all you need. Tshark is your friend.
+Making different data variations greatly helps during processing. Focus on essential sections, different formats, segment sizes, delimiters, and decoders to feed all you need. Tshark is your friend.
 
 
 ### Burnout
 
-Now, about that hellhole. I would like to thank the main crutch of this violent night: the one and only CyberChef for always being there when I'm too burnt to handle. Trying to make sense of the data is an unhealthy obsession. The math jungle and its offsets can be approached in multiple ways, and even though the aforementioned tools were amazing, they didn't get me much further (at least they got me this random PSK squeeze).
+Now, about that hellhole. I would like to thank the main crutch of this violent night: the one and only [CyberChef](https://gchq.github.io/CyberChef/)  for always being there when I'm too burnt to handle. Trying to make sense of the data is an unhealthy obsession. The math jungle and its offsets can be approached in multiple ways, and even though the aforementioned tools were amazing, they didn't get me much further (at least they got me this random PSK squeeze).
 
 ![PSK squeeze](/assets/img/crewctf/2024/psk_clock.png){: .mx-auto.d-block :}
 
@@ -110,7 +108,7 @@ The flag extractor on its own was expected, but there aren't many other sources,
 
 ## Conclusion
 
-Believe it or not, it's still in the forensics category for a reason. Always remember the age-old mantra:
+It's still in the forensics category for a reason so always remember the age-old mantra:
 ~~~
 Doing the right protocols, 
    in the right frame, 
@@ -119,11 +117,13 @@ Doing the right protocols,
 gets_you{mad_cheeks}.
 ~~~
 
-In reality, this challenge mainly requires you to recognize the traffic, decode, and concatenate a specific segment from both message types. So technically, everything else could be considered bloat. To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
+In reality, this challenge mainly requires you to recognize the traffic, decode, and concatenate a specific segment from both message types. So technically, everything else could be considered bloat. 
+
+To prove my point about approaching the jungle in multiple ways, here is an honorary mention for @Ske and his absolutely beautiful, peak forensics performance. Because, in the end, the scoreboard doesn't care if your bloated script can manipulate the entire principle. The key is to give a shit, aim, and hit.
 
 ![Image of guessrensics](/assets/img/crewctf/2024/peak_guessrensics.png)
 
-Anyway, here is my bloated function with improved packet parsing, thanks to the teammate of @.
+Anyway, here is my bloated function with improved packet parsing, thanks to the teammate of @warlocksmurf.
 
 {% highlight Python linenos %}
 def parse_packets(filename):
