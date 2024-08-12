@@ -11,7 +11,7 @@ share-img: /assets/img/crewctf/2024/bg.png
 
 # Crew CTF - Forensics writeup
 
-I have to be honest: the set of challenges was exceptionally interesting, with a reasonable progression of difficulty. However, the lack of attention given to the final forensics challenge (Unfare) is criminal. This write-up takes on higher personal priority due to the need for archiving.
+I have to be honest: the set of challenges was exceptionally interesting, with a reasonable progression of difficulty. However, the lack of love given to the final forensics challenge (Unfare) from my peers is criminal. This write-up takes on higher personal priority due to deep personal fascination and the need for archiving.
 {: .box-warning}
 
 I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
@@ -227,7 +227,7 @@ Additionally, to prove my point about approaching the jungle in multiple ways, h
 Massive thank you to the whole Hackerscrew for putting such an amazing event together. Definitely will save the date for next year!
 
 ### _____________________________________________________________________
-<em> Fun resources for anyone solving possibly related problem </em>
+### <em> Fun resources for anyone solving possibly related problem </em>
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png)
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png)
