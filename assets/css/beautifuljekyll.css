@@ -1015,6 +1015,10 @@ pre {
   margin-bottom: 0;
 }
 
+body {
+	body {background-color: #f7f7f7;}
+}
+
 .center {
   display: block;
   margin: 0 auto;
