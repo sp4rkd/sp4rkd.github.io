@@ -35,7 +35,8 @@ body {
   font-size: 1.125rem;
   color: var(--text-col);
   position: relative;
-  background-color: linear-gradient(to right, #ececec 25%, #f7f7f7 25% 75%, #ececec 75%);
+  background: linear-gradient(to right, #ececec 25%, #f7f7f7 25% 75%, #ececec 75%);
+  background-repeat: no-repeat;
   {% if site.page-img %}
   background-image: url({{ site.page-img | relative_url }});
   background-attachment: fixed;
