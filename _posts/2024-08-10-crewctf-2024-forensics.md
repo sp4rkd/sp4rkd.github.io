@@ -8,10 +8,10 @@ thumbnail-img: /assets/img/crewctf/2024/thumb.png
 share-img: /assets/img/crewctf/2024/bg.png
 ---
 
-# Forensics writeup
-
 I have to be honest: the set of challenges was exceptionally interesting, with a reasonable progression of difficulty. However, the lack of love given to the final forensics challenge (Unfare) from my peers is criminal. This write-up takes on higher personal priority due to deep personal fascination and the need for archiving.
 {: .box-warning}
+
+# Forensics writeup
 
 I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
 Without further ado, here go my notes.
