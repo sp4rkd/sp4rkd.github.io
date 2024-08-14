@@ -1,7 +1,6 @@
 ---
 layout: post
 title: CrewCTF 2024
-subtitle: The harsh reality of USB pcaps
 gh-repo: sp4rkd/CrewCTF2024-forensics
 tags: [ctf, forensics, usb, proxmark3, mifare, felica, writeup]
 cover-img: /assets/img/crewctf/2024/bg.png
