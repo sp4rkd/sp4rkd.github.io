@@ -14,6 +14,7 @@ I have to be honest: the set of challenges was exceptionally interesting, with a
 # Forensics writeup
 
 I highly recommend checking out [write-ups](https://ctftime.org/event/2223/tasks/) for different challenges as well; my personal favorite was [@warlocksmurf](https://warlocksmurf.github.io/posts/crewctf2024/), who produced a tremendous piece about the remaining forensics challenges.
+
 Without further ado, here go my notes.
 
 ## - Recursion -
