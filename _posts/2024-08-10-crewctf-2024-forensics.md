@@ -226,8 +226,8 @@ Additionally, to prove my point about approaching the jungle in multiple ways, h
 
 Massive thank you to the whole Hackerscrew for putting such an amazing event together. Definitely will save the date for next year!
 
-<em> [PS]: Fun resources for anyone solving possibly related problem: </em>
 ### _____________________________________________________________________
+<em>** [PS]: Fun resources for anyone solving possibly related problem: **</em>
 
 ![Where to find fpga hf](/assets/img/crewctf/2024/fpga_hf.v.png){: .mx-auto.d-block :}
 ![Where to find fpga hi reader](/assets/img/crewctf/2024/fpga_hi_reader.v.png){: .mx-auto.d-block :}
