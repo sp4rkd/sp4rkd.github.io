@@ -9,7 +9,7 @@ thumbnail-img: /assets/img/crewctf/2024/thumb.png
 share-img: /assets/img/crewctf/2024/bg.png
 ---
 
-# Crew CTF - Forensics writeup
+# Forensics writeup
 
 I have to be honest: the set of challenges was exceptionally interesting, with a reasonable progression of difficulty. However, the lack of love given to the final forensics challenge (Unfare) from my peers is criminal. This write-up takes on higher personal priority due to deep personal fascination and the need for archiving.
 {: .box-warning}
